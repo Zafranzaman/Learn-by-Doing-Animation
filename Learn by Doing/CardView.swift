@@ -23,8 +23,10 @@ struct CardView: View {
   
   var body: some View {
     ZStack {
+//    transaction: Transaction(animation: .spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.25))
       Image(card.imageName)
             .background(Color.clear)
+            .transition(.scale)
         .opacity(fadeIn ? 1.0 : 0.0)
       
       VStack {
