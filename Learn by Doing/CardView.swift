@@ -60,14 +60,14 @@ struct CardView: View {
         }
         .padding(.vertical)
         .padding(.horizontal, 24)
-        .background(LinearGradient(gradient: Gradient(colors: card.gradientColors), startPoint: .leading, endPoint: .trailing))
+        .background(gradientBackgroundColorsView(gradientColors: card.gradientColors,startPoint: .leading,endPoint: .trailing))
         .clipShape(Capsule())
         .shadow(color: Color("ColorShadow"), radius: 6, x: 0, y: 3)
       }
       .offset(y: moveUpward ? 210 : 300)
     }
     .frame(width: 335, height: 545)
-    .background(LinearGradient(gradient: Gradient(colors: card.gradientColors), startPoint: .top, endPoint: .bottom))
+    .background(gradientBackgroundColorsView(gradientColors: card.gradientColors,startPoint: .top,endPoint: .bottom))
     .cornerRadius(16)
     .onAppear() {
       withAnimation(.linear(duration: 1.2)) {
@@ -90,4 +90,14 @@ struct CardView: View {
 
 #Preview {
     CardView(card: cardData[0])
+}
+
+struct gradientBackgroundColorsView: View {
+    var gradientColors: [Color]
+    var startPoint: UnitPoint
+    var endPoint: UnitPoint
+    
+    var body: some View {
+        LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: startPoint, endPoint: endPoint)
+    }
 }
